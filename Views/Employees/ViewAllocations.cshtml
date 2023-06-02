@@ -1,0 +1,77 @@
+﻿@model MarketMentor.Models.EmployeeAllocationVM
+
+@{
+    ViewData["Title"] = "View Allocations";
+}
+
+<h1>Ver activos de @Model.FirstName @Model.LastName</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateJoined)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateJoined)
+        </dd>
+
+    </dl>
+</div>
+<hr />
+<div class="card">
+    <h4>Leave Allocations</h4>
+
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">Nombre</div>
+                <div class="col">Dias solicitados</div>
+                <div class="col">Dias aprobados</div>
+                <div class="col">Opciones</div>
+            </div>
+        </li>
+        @foreach (var allocation in Model.LeaveAllocations)
+        {
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col"><h6>@allocation.LeaveType.Name</h6></div>
+                    <div class="col">
+                        <button type="button" class="btn btn-primary">
+                           Dias solicitados <span class="badge bg-secondary">@allocation.LeaveType.DefaultDays</span>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-primary">
+                            Dias aprobados <span class="badge bg-secondary">@allocation.NumberOfDays</span>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <a class="btn btn-warning" asp-action="EditAllocation" asp-route-id="@allocation.Id"><i class="fas fa-pencil-alt"></i>  Editar activo</a> |
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-black">Back to List</a>
+</div>

@@ -2,7 +2,42 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- TradingView Widget BEGIN -->
+<!-- TradingView Widget BEGIN -->
+<div>
+    <div><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"></a></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+        new TradingView.widget(
+            {
+                "width": 1209,
+                "height": 680,
+                "symbol": "PEPPERSTONE:GBPUSD",
+                "interval": "1",
+                "timezone": "Etc/UTC",
+                "theme": "dark",
+                "style": "1",
+                "locale": "en",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "withdateranges": true,
+                "hide_side_toolbar": false,
+                "allow_symbol_change": true,
+                "watchlist": [
+                    "PEPPERSTONE:EURUSD",
+                    "PEPPERSTONE:USDCAD",
+                    "PEPPERSTONE:GBPJPY"
+                ],
+                "studies": [
+                    "STD;Bollinger_Bands",
+                    "STD;EMA",
+                    "STD;RSI",
+                    "STD;VWMA"
+                ],
+                "container_id": "tradingview_3b9f5"
+            }
+        );
+    </script>
 </div>
+<!-- TradingView Widget END -->
+<!-- TradingView Widget END -->

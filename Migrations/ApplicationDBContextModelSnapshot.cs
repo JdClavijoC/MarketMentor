@@ -100,6 +100,48 @@ namespace MarketMentor.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "02f63707-30f8-47f0-af90-e96561934ff1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "92d596ae-2649-469d-8c59-9e57ec38cf08",
+                            DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "jdclavijoc@ufpso.edu.co",
+                            EmailConfirmed = false,
+                            Firstname = "Jesus David",
+                            Lastname = "Clavijo Cardenas",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "JDCLAVIJOC@UFPSO.EDU.CO",
+                            NormalizedUserName = "JDCLAVIJOC@UFPSO.EDU.CO",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEDrMtxPz6sxic+TEPM97nrjAKz7QIPPx1klb9MxO97Xq2HaNkD1eeLOqPNoXtk2NA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "d2b5e23a-52db-4294-b8ed-172b8268a5dd",
+                            TwoFactorEnabled = false,
+                            UserName = "jdclavijoc@ufpso.edu.co"
+                        },
+                        new
+                        {
+                            Id = "67e26e4c-409b-4abc-81dd-d24d0255626e",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "9a8e37a8-d6a4-4e10-a775-38ac505cb084",
+                            DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "jaclagar1234@gmail.com",
+                            EmailConfirmed = false,
+                            Firstname = "Jesus",
+                            Lastname = "David",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "JACLAGAR1234@GMAIL.COM",
+                            NormalizedUserName = "JACLAGAR1234@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEE8lAR/hcCTcm/9V+XlEUPJlxsGj21L8YdjhicuzEqIk3t8zIIjRaYg3d0jRJChsOw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "8e7fd370-5005-478b-b8da-4718bee436a9",
+                            TwoFactorEnabled = false,
+                            UserName = "jaclagar1234@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("MarketMentor.Data.LeaveAllocations", b =>
@@ -126,11 +168,60 @@ namespace MarketMentor.Migrations
                     b.Property<int>("NumberOfDays")
                         .HasColumnType("int");
 
+                    b.Property<int>("Period")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("LeaveTypeId");
 
                     b.ToTable("LeaveAllocations");
+                });
+
+            modelBuilder.Entity("MarketMentor.Data.LeaveRequest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool?>("Approved")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Canceled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateRequested")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LeaveTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RequestComments")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RequestingEmployeeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LeaveTypeId");
+
+                    b.ToTable("LeaveRequests");
                 });
 
             modelBuilder.Entity("MarketMentor.Data.LeaveTypes", b =>
@@ -184,6 +275,20 @@ namespace MarketMentor.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "67e26e4c-409b-4abc-82cd-d24d0255626e",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        },
+                        new
+                        {
+                            Id = "67e26e4c-459bc-4abc-81dd-d24d0255626",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -273,6 +378,18 @@ namespace MarketMentor.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "02f63707-30f8-47f0-af90-e96561934ff1",
+                            RoleId = "67e26e4c-409b-4abc-82cd-d24d0255626e"
+                        },
+                        new
+                        {
+                            UserId = "67e26e4c-409b-4abc-81dd-d24d0255626e",
+                            RoleId = "67e26e4c-459bc-4abc-81dd-d24d0255626"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -297,6 +414,17 @@ namespace MarketMentor.Migrations
                 });
 
             modelBuilder.Entity("MarketMentor.Data.LeaveAllocations", b =>
+                {
+                    b.HasOne("MarketMentor.Data.LeaveTypes", "LeaveType")
+                        .WithMany()
+                        .HasForeignKey("LeaveTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("LeaveType");
+                });
+
+            modelBuilder.Entity("MarketMentor.Data.LeaveRequest", b =>
                 {
                     b.HasOne("MarketMentor.Data.LeaveTypes", "LeaveType")
                         .WithMany()
